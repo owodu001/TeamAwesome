@@ -29,8 +29,7 @@ $(document).ready(function() {
     const lon = data.location_suggestions[0].longitude;
     console.log("Lat: ", lat, " Lon: ", lon);
     if (data) {
-    // let valueSearch = $('#getText').val()
-    // let searchCity = "&q=" + valueSearch;
+  
     let settings = {
       "async": true,
       "crossDomain": true,
