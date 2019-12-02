@@ -1,3 +1,10 @@
+body {
+    background: url("./images/weather.png") repeat;
+    overflow: hidden;
+    width: 100%;
+    min-height: 100vh;
+  }
+
 
 .input {
     width: 350px;
