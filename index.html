@@ -1,15 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>asdfasdf</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project 1</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
-    <h1>Michelle was here</h1>
-</body>
+  <!-- navbar c/o bulma.io -->
+  <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://bulma.io">
+        <i class="fas fa-compass"></i>
+      </a>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-dark">
+            Home
+          </a>
+          <a class="button is-dark">
+            About
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </nav>
+  <!-- end navbar-->
+  <section class="section is-centered">
+    <div class="container has-text-centered is-centered" id="start-container">
+      <div class="row is-centered">
+        <div class="column is-centered has-background-warning">
+          <h1 class="title">
+            EZplan
+          </h1>
+          <p class="subtitle">
+            Find nearby travel, lodging, and cuisine.
+          </p>
+          <!-- search group -->
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input is-expanded" type="text" placeholder="Enter a city" id="search-bar">
+            </div>
+            <div class="control">
+              <a class="button is-info" id="search-button">
+                Search
+              </a>
+            </div>
+          </div>
+          <!-- end search -->
+        </div>
+      </div>
+    </div>
+  </section>
 
-</html>
+<div class="container" id="results-container">
+  <div class="columns is-mobile">
+      <div class="column has-background-warning">
+        <h1 class=title>
+          Cuisine
+        </h1>
+        <hr>
+        <div class="box is-info" id="food-info"></div>
+      </div>
+      <div class="column has-background-warning">
+        <h1 class="title">
+          Travel & Lodging
+        </h1>
+        <hr>
+        <div class="box is-info" id="food-info"></div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- footer -->
+
+
+</body>
