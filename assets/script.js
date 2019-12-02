@@ -61,12 +61,3 @@ searchBtnEl.addEventListener("click", function(event){
     // Check if global latitude and longitude have been changed with new values
     console.log("User selected lat: ", latitude, " lng: ", longitude);
 });
-
-
-
-
-
-
-
-
-
