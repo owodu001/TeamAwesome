@@ -1,8 +1,8 @@
-body{
-    font-family: 'Roboto', sans-serif;
+
+.input {
+    width: 350px;
 }
 
-.container {
-    padding: 5px;
-    margin: 2px;
+.box {
+    width: auto;
 }

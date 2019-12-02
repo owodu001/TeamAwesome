@@ -35,9 +35,9 @@
   </nav>
   <!-- end navbar-->
   <section class="section is-centered">
-    <div class="container has-text-centered is-centered" id="start-container">
-      <div class="row is-centered">
-        <div class="column is-centered has-background-warning">
+    <div class="container has-text-centered" id="start-container">
+      <div class="row">
+        <div class="column has-background-warning">
           <h1 class="title">
             EZplan
           </h1>
@@ -47,7 +47,7 @@
           <!-- search group -->
           <div class="field has-addons has-addons-centered">
             <div class="control">
-              <input class="input is-expanded" type="text" placeholder="Enter a city" id="search-term">
+              <input class="input is-expanded" type="text" placeholder="Enter a city or ZIP Code" id="search-term">
             </div>
             <div class="control">
               <button class="button is-info" id="search-btn">
@@ -61,30 +61,31 @@
     </div>
   </section>
 
-<div class="container" id="results-container">
-  <div class="columns is-mobile">
-      <div class="column has-background-warning">
-        <h1 class=title>
-          Cuisine
-        </h1>
+
+  <div class="container has-text-centered" id="results-container">
+    <div class="row is-centered">
+      <div class="box has-background-warning">
+        <h2 class="subtitle">Weather</h2>
         <hr>
-        <div class="box is-info" id="food-info"></div>
+        <div class="card">
+          <div class="content" id="weather-content"></div>
+        </div>
       </div>
-      <div class="column has-background-warning">
-        <h1 class="title">
-          Travel & Lodging
-        </h1>
+      <div class="box has-background-warning">
+        <h2 class="subtitle">Cuisine</h2>
         <hr>
-        <div class="box is-info" id="food-info"></div>
+        <div class="card">
+          <div class="content" id="cuisine-content"></div>
+        </div>
       </div>
     </div>
   </div>
 
 
-<!-- footer -->
-<!-- Paul added Google places api, axios library, and local js file 'script.js'-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAo7LHYw7uiQ-ejxQ_FBR_BGyLxz5TPS2Q
+  <!-- footer -->
+  <!-- Paul added Google places api, axios library, and local js file 'script.js'-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAo7LHYw7uiQ-ejxQ_FBR_BGyLxz5TPS2Q
 &libraries=places"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-<script src="./assets/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+  <script src="./assets/script.js"></script>
 </body>
