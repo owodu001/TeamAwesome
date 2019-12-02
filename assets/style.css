@@ -1,7 +1,16 @@
-body{
-    font-family: 'Roboto', sans-serif;
+body {
+    background: url("./images/weather.png") repeat;
+    overflow: hidden;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+
+.input {
+    width: 350px;
 }
 
+<<<<<<< HEAD
 .container {
     padding: 5px;
     margin: 2px;
@@ -89,3 +98,8 @@ body {
     float: right;
     margin-right: 15px;
   }
+=======
+.box {
+    width: auto;
+}
+>>>>>>> c8cbb9e27e441da9730c8bbba5b38cb1211669b4
