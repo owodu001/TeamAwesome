@@ -1,6 +1,7 @@
+// $(document).ready(function () {
 // GLOBAL VARIABLES =====================================================================================================================
 // Define goble variable for latitude and longitude
-let latitude ="";
+let latitude = "";
 let longitude = "";
 // Define global variable for search input element
 const userInputEl = document.getElementById("search-term");
@@ -25,7 +26,7 @@ function autoComplete(inputEl) {
 }
 
 // GET USER CURRENT LOCATION AND GET THEIR LOCATION'S LATITUDE & LONGITUDE ===============================================================
-function getCurrentLocation(){
+function getCurrentLocation() {
 
     // If user allowed access to their current location, update the global lat & lng
     if (navigator.geolocation) {
@@ -56,8 +57,58 @@ autoComplete(userInputEl);
 getCurrentLocation();
 
 // ADD CLICK EVENT TO THE SEARCH BUTTON ==============================================================================================
-searchBtnEl.addEventListener("click", function(event){
+searchBtnEl.addEventListener("click", function (event) {
     event.preventDefault();
     // Check if global latitude and longitude have been changed with new values
     console.log("User selected lat: ", latitude, " lng: ", longitude);
+    select();
 });
+
+    function select() {
+
+        let settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://developers.zomato.com/api/v2.1/search?lat=" +
+                latitude + "&lon=" + longitude + "&count=100",
+            "method": "GET",
+            "headers": {
+                "user-key": "91ed3953ab67d3bc31054f6a0ee5a372",
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+       
+        $.getJSON(settings, function (datares) {
+           console.log(datares);
+            datares = datares.restaurants;
+            console.log("datar", datares);
+            let html = "";
+            $.each(datares, function (index, value) {
+
+            let x = datares[index];
+            console.log(typeof x);
+            console.log(x);
+                $.each(x, function (index, value) {
+                    let location = x.restaurant.location;
+                    let userRating = x.restaurant.user_rating;
+                    html += "<div class='data img-rounded'>";
+                    html += "<div class='rating'>";
+                    html += "<span title='" + userRating.rating_text + "'><p style='color:white;background-color:#" + userRating.rating_color + ";border-radius:4px;border:none;padding:2px 10px 2px 10px;text-align: center;text-decoration:none;display:inline-block;font-size:16px;float:right;'><strong>" + userRating.aggregate_rating + "</strong></p></span><br>";
+                    html += "  <strong class='text-info'>" + userRating.votes + " votes</strong>";
+                    html += "</div>";
+                    html += "<img class='resimg img-rounded' src=" + value.thumb + " alt='Restaurant Image' height='185' width='185'>";
+                    html += "<a href=" + value.url + " target='_blank' class='action_link'><h2 style='color:red;'><strong>" + value.name + "</strong></h2></a>";
+                    html += "  <strong class='text-primary'>" + location.locality + "</strong><br>";
+                    html += "  <h6 style='color:grey;'><strong>" + location.address + "</strong></h6><hr>";
+                    html += "  <strong>CUISINES</strong>: " + value.cuisines + "<br>";
+                    html += "  <strong>COST FOR TWO</strong>: " + value.currency + value.average_cost_for_two + "<br>";
+                    html += "</div><br>";
+                });
+            });
+            $("#food-info").html(html);
+
+        });
+    }
+
+
+// });
