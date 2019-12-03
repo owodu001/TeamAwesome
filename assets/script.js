@@ -194,13 +194,14 @@ function displayresto() {
                 if (value.thumb != ""){
                     let location = restoObj.restaurant.location;
                     let userRating = restoObj.restaurant.user_rating;
-                    html += "<div class='data '>";
+                    html += "<div class='data img-rounded'>";
                     html += "<div class='rating'>";
+               
                     html += "<span title='" + userRating.rating_text + "'><p style='color:white;background-color:#" + userRating.rating_color + ";border-radius:4px;border:none;padding:2px 10px 2px 10px;text-align: center;text-decoration:none;display:inline-block;font-size:16px;float:right;'><strong>" + userRating.aggregate_rating + "</strong></p></span><br>";
-                    html += "  <strong class='text-info'>" + userRating.votes + " votes</strong>";
+                    html += "  <strong class='has-text-info'>" + userRating.votes + " votes</strong>";
                     html += "</div>";
-                    html += "<img class='resimg' src=" + value.thumb + " alt='Restaurant Image' height='185' width='185'>";
-                    html += "<a href=" + value.url + " target='_blank' class='is-active'><h2 style='color:blue;'><strong>" + value.name + "</strong></h2></a>";
+                    html += "<img class='resimg img-rounded' src=" + value.thumb + " alt='Restaurant Image' height='185' width='185'>";
+                    html += "<a href=" + value.url + " target='_blank' class='action_link'><h2 style='color:blue;'><strong>" + value.name + "</strong></h2></a>";
                     html += "  <strong class='has-text-primary'>" + location.locality + "</strong><br>";
                     html += "  <h6 style='color:grey;'><strong>" + location.address + "</strong></h6><hr>";
                     html += "  <strong>CUISINES</strong>: " + value.cuisines + "<br>";

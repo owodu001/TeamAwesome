@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Restaurant Locator</title>
+  <title>Nearby Restaurants</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
@@ -13,17 +13,36 @@
 
 <body>
   <!-- navbar c/o bulma.io -->
-
+  <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://bulma.io">
+        <i class="fas fa-compass"></i>
+      </a>
+    </div>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-dark">
+            Home
+          </a>
+          <a class="button is-dark">
+            About
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </nav>
   <!-- end navbar-->
   <section class="section is-centered">
     <div class="container has-text-centered" id="start-container">
       <div class="row">
         <div class="column has-background-warning">
           <h1 class="title">
-            Restaurant Locator
+            EZplan
           </h1>
           <p class="subtitle">
-            Find information about nearby weather and cuisine in U.S. cities.
+            Find information about nearby weather and cuisine.
           </p>
           <!-- search group -->
           <div class="field has-addons has-addons-centered">
@@ -43,31 +62,25 @@
   </section>
 
 
-  <div class="container has-text-centered" id="results-container">
-    <div class="row is-centered">
-      <div class="box has-background-warning">
-        <h2 class="subtitle">Weather</h2>
-        <hr>
-        <div class="card" id="weather">
-
-           
-          </div>
-        </div>
-      </div>
-      
-      <div class="box has-background-warning">
+  <div class="container" id="results-container">
+     <div class="row is-centered">
+     
+  
+       
+      <!-- <div class="box has-background-warning">
         <h2 class="subtitle">Cuisine</h2>
-        <hr>
-        <div class="card" id ="food-info">
+        <hr> -->
+        <div class="card column " id ="food-info">
          
         </div>
-        </div>
+        <!-- </div>
       </div>
-    </div>
+    </div> -->
   </div>
 
 
 <!-- footer -->
+
 <!-- Paul added Google places api, axios library, and local js file 'script.js'-->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
