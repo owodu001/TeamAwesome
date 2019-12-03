@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nearby Restaurants</title>
+  <title>Restaurant Locator</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
@@ -13,36 +13,17 @@
 
 <body>
   <!-- navbar c/o bulma.io -->
-  <nav class="navbar is-warning" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
-        <i class="fas fa-compass"></i>
-      </a>
-    </div>
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-dark">
-            Home
-          </a>
-          <a class="button is-dark">
-            About
-          </a>
-        </div>
-      </div>
-    </div>
-    </div>
-  </nav>
+
   <!-- end navbar-->
   <section class="section is-centered">
     <div class="container has-text-centered" id="start-container">
       <div class="row">
         <div class="column has-background-warning">
           <h1 class="title">
-            EZplan
+            Restaurant Locator
           </h1>
           <p class="subtitle">
-            Find information about nearby weather and cuisine.
+            Find information about nearby weather and cuisine in U.S. cities.
           </p>
           <!-- search group -->
           <div class="field has-addons has-addons-centered">
@@ -67,14 +48,9 @@
       <div class="box has-background-warning">
         <h2 class="subtitle">Weather</h2>
         <hr>
-        <div class="card">
-          <div class="content" id="weather-content">
-            <p class="weather-name" id="city"></p>
-            <p class="weather-date" id="date"></p>
-            <p class="weather-icon" id="icon"></p>
-            <p class="weather-wind" id="wind"></p>
-            <p class="weather-humidity" id="humidity"></p>
-            <p class="weather-temp" id="temp"></p>
+        <div class="card" id="weather">
+
+           
           </div>
         </div>
       </div>

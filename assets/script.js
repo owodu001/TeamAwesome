@@ -1,4 +1,3 @@
-// $(document).ready(function () {
 // GLOBAL VARIABLES =====================================================================================================================
 // Define goble variable for latitude and longitude
 let latitude = "";
@@ -7,9 +6,6 @@ let longitude = "";
 const userInputEl = document.getElementById("search-term");
 // Define global variable for search button element
 const searchBtnEl = document.getElementById("search-btn");
-// ======================================================================================================================================
-
-
 // MAKE AUTOCOMPLETE ON SEARCH BOX AND GET LATITUDE & LONGITUDE OF THE SELECTED LOCATION ================================================
 function autoComplete(inputEl) {
     // Create new object of Google places with the type of 'geocode'
@@ -33,8 +29,10 @@ function getCurrentLocation() {
         navigator.geolocation.getCurrentPosition(function (position) {
             latitude = position.coords.latitude;
             longitude = position.coords.longitude;
+
             console.log("User's current lat & lon: ", latitude, ", ", longitude);
             displayresto();
+            getCurWeather();
         }, function (error) { // Handle error
             switch (error.code) {
                 case error.PERMISSION_DENIED: // User denied the access to their location
@@ -62,8 +60,109 @@ searchBtnEl.addEventListener("click", function (event) {
     event.preventDefault();
     // Check if global latitude and longitude have been changed with new values
     console.log("User selected lat: ", latitude, " lng: ", longitude);
+    getCurWeather();
     displayresto();
+
 });
+// Amiraaaaaaaa =====================================================================
+function convertDate(epoch) {
+    // function to convert unix epoch to local time
+    // returns arr ["MM/DD/YYYY, HH:MM:SS AM", "MM/DD/YYYY", "HH:MM:SS AM"]
+
+    let readable = [];
+    let myDate = new Date(epoch * 1000);
+
+    // local time
+    // returns string "MM/DD/YYYY, HH:MM:SS AM"
+    readable[0] = (myDate.toLocaleString());
+    readable[1] = ((myDate.toLocaleString().split(", "))[0]);
+    readable[2] = ((myDate.toLocaleString().split(", "))[1]);
+
+
+    return readable;
+}
+function getCurWeather() {
+
+    // function to get current weather
+    // returns object of current weather data
+    // clear search field
+    //  $('#search-term').val("");
+    //   city = `lat=${latitude}&lon=${longitude}`;
+    // set queryURL based on type of query
+    const apiKey = "166a433c57516f51dfab1f7edaed8413";
+    let requestType = "";
+    let query = "";
+    let url = 'https://api.openweathermap.org/data/2.5/';
+    requestType = 'weather';
+    console.log("latitude-weather:", latitude);
+
+    query = `?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`;
+    queryURL = `${url}${requestType}${query}`;
+    // Create an AJAX call to retrieve data Log the data in console
+    $.ajax({
+        url: queryURL,
+        method: 'GET'
+    }).then(function (response) {
+
+console.log("Weather data: ", response);
+        weatherObj = {
+            city: `${response.name}`,
+            wind: response.wind.speed,
+            humidity: response.main.humidity,
+            temp: response.main.temp,
+            date: (convertDate(response.dt))[1],
+            icon: `http://openweathermap.org/img/w/${response.weather[0].icon}.png`,
+            desc: response.weather[0].description
+        }
+
+        // calls function to draw results to page
+        drawCurWeather(weatherObj);
+
+    });
+};
+
+function drawCurWeather(cur) {
+    // function to draw  weather for day 
+
+    $('#weather').empty();
+    let $cardTitle = $('<h5 class="card-title">');
+    $cardTitle.text(cur.city + " (" + cur.date + ")");
+
+
+    let $ul = $('<ul>');
+
+    let $iconLi = $('<li>');
+    let $iconI = $('<img>');
+    $iconI.attr('src', cur.icon);
+
+    let $weathLi = $('<li>');
+    $weathLi.text(cur.weather);
+
+    let $temp = $('<li>');
+    $temp.text('Temp: ' + cur.temp + " F");
+
+    let $curWind = $('<li>');
+    $curWind.text('Windspeed: ' + cur.wind + " MPH");
+
+    let $humLi = $('<li>');
+    $humLi.text('Humidity: ' + cur.humidity + "%");
+
+    // assemble element
+    $iconLi.append($iconI);
+
+    $ul.append($iconLi);
+    $ul.append($weathLi);
+    $ul.append($temp);
+    $ul.append($curWind);
+    $ul.append($humLi);
+
+    $cardTitle.append($ul);
+    $('#weather').append($cardTitle);
+
+
+};
+
+
 //  Create a function to display the restaurant based on city 
 function displayresto() {
     // Define an object 'settings' to store query url to API server
@@ -90,18 +189,18 @@ function displayresto() {
             console.log(typeof restoObj);
             console.log("Resto data: ", restoObj);
             $.each(restoObj, function (index, value) {
-                // show only restaurant that has picture
+                // Show only restaurant that has picture
                 if (value.thumb != ""){
                     let location = restoObj.restaurant.location;
                     let userRating = restoObj.restaurant.user_rating;
-                    html += "<div class='data img-rounded'>";
+                    html += "<div class='data '>";
                     html += "<div class='rating'>";
                     html += "<span title='" + userRating.rating_text + "'><p style='color:white;background-color:#" + userRating.rating_color + ";border-radius:4px;border:none;padding:2px 10px 2px 10px;text-align: center;text-decoration:none;display:inline-block;font-size:16px;float:right;'><strong>" + userRating.aggregate_rating + "</strong></p></span><br>";
                     html += "  <strong class='text-info'>" + userRating.votes + " votes</strong>";
                     html += "</div>";
-                    html += "<img class='resimg img-rounded' src=" + value.thumb + " alt='Restaurant Image' height='185' width='185'>";
-                    html += "<a href=" + value.url + " target='_blank' class='action_link'><h2 style='color:red;'><strong>" + value.name + "</strong></h2></a>";
-                    html += "  <strong class='text-primary'>" + location.locality + "</strong><br>";
+                    html += "<img class='resimg' src=" + value.thumb + " alt='Restaurant Image' height='185' width='185'>";
+                    html += "<a href=" + value.url + " target='_blank' class='is-active'><h2 style='color:blue;'><strong>" + value.name + "</strong></h2></a>";
+                    html += "  <strong class='has-text-primary'>" + location.locality + "</strong><br>";
                     html += "  <h6 style='color:grey;'><strong>" + location.address + "</strong></h6><hr>";
                     html += "  <strong>CUISINES</strong>: " + value.cuisines + "<br>";
                     html += "  <strong>COST FOR TWO</strong>: " + value.currency + value.average_cost_for_two + "<br>";
@@ -114,4 +213,9 @@ function displayresto() {
 }// end of function
 
 
-// });
+
+
+
+
+
+
