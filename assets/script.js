@@ -34,6 +34,7 @@ function getCurrentLocation() {
             latitude = position.coords.latitude;
             longitude = position.coords.longitude;
             console.log("User's current lat & lon: ", latitude, ", ", longitude);
+            displayresto();
         }, function (error) { // Handle error
             switch (error.code) {
                 case error.PERMISSION_DENIED: // User denied the access to their location
