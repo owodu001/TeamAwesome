@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Project 1</title>
+  <title>Restaurant Locator</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
@@ -39,10 +39,10 @@
       <div class="row">
         <div class="column has-background-warning">
           <h1 class="title">
-            EZplan
+            Restaurant Locator
           </h1>
           <p class="subtitle">
-            Find information about nearby weather and cuisine.
+            Find information about nearby weather and cuisine in U.S. cities.
           </p>
           <!-- search group -->
           <div class="field has-addons has-addons-centered">
@@ -78,33 +78,25 @@
           </div>
         </div>
       </div>
+      
       <div class="box has-background-warning">
         <h2 class="subtitle">Cuisine</h2>
         <hr>
-        <div class="card">
-          <div class="content" id="cuisine-content">
-            <p class="food-name"></p>
-            <p class="food-address"></p>
-            <p class="food-phone"></p>
-            <p class="food-cuisine"></p>
-            <p class="food-timings"></p>
-            <p class="food-price"></p>
-            <p class="food-aggregate-rating"></p>
-            <p class="food-rating-text"></p>
-            <p class="food-image"></p>
-            <p class="food-events"></p>
-            <p class="food-reservation"></p>
-          </div>
+        <div class="card" id ="food-info">
+         
+        </div>
         </div>
       </div>
     </div>
   </div>
 
 
-  <!-- footer -->
-  <!-- Paul added Google places api, axios library, and local js file 'script.js'-->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAo7LHYw7uiQ-ejxQ_FBR_BGyLxz5TPS2Q
+<!-- footer -->
+<!-- Paul added Google places api, axios library, and local js file 'script.js'-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAo7LHYw7uiQ-ejxQ_FBR_BGyLxz5TPS2Q
 &libraries=places"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-  <script src="./assets/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script> 
+ <script src="./assets/script.js"></script>
 </body>
