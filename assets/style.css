@@ -1,12 +1,11 @@
 body {
   
   background-image: url("https://cdn.pixabay.com/photo/2017/01/20/15/06/orange-1995056_1280.jpg");
-  background-size : cover;
-  background-position : center center;
-  overflow : auto ;
-  margin: 0;
-  padding: 0;
-  width: 100%;
+  background-size: cover;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  z-index: 1;
   height: 100vh;
 
 }

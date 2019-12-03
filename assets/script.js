@@ -176,8 +176,7 @@ function displayresto() {
             "user-key": "91ed3953ab67d3bc31054f6a0ee5a372",
             'Content-Type': 'application/x-www-form-urlencoded' // Return in JSON format
         }
-    }
-
+    }// end of defining object 'settings'
     $.getJSON(settings, function (datares) { // make a request to API server
         console.log(datares);
         datares = datares.restaurants;
@@ -208,13 +207,11 @@ function displayresto() {
                     html += "  <strong>COST FOR TWO</strong>: " + value.currency + value.average_cost_for_two + "<br>";
                     html += "</div><br>";
                 }
-                
             });
         });
         $("#food-info").html(html);
-
-    });
-}
+    }); // end of request for getting data to API server
+}// end of function
 
 
 
