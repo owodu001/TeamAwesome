@@ -1,13 +1,10 @@
 body {
-  
   background-image: url("https://cdn.pixabay.com/photo/2017/01/20/15/06/orange-1995056_1280.jpg");
   background-size: cover;
   overflow: auto;
   top: 0;
   left: 0;
-  z-index: 1;
   height: 100vh;
-
 }
 * {
   box-sizing: border-box;
@@ -15,29 +12,20 @@ body {
   margin: 0;
   padding: 0;
 }
+ 
+ul{ 
+  list-style-type: none;
+  padding-left: 0;
+}
 
+li{ 
+  font-size: 16px;
+}
   .card {
     width: 100%;
     background-color: #ececec;
   }
-  
-  ul{ 
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  li{ 
-    font-size: 16px;
-  }
-  /* .pt {
-    padding-top: 75px;
-  } */
-  
-  /* .logo {
-    width: 150px;
-    height: 150px;
-  } */
-   /* need */
+ 
   .data {
     padding-left: 50px;
     padding-right: 50px;
@@ -45,24 +33,17 @@ body {
     padding-bottom: 10px;
     background-color: #F5F5F5;
   }
-     /* need */
+  
   a.action_link {
     text-decoration: none;
   }
-     /* need */
+
   .resimg {
     float: left;
      margin-right: 15px; */
 
   }
   
-  
-
-  /* .horizontal-center-row {
-    display: flex;
-    justify-content: center;
-  } */
-     /* need */
   .rating {
     float: right;
     margin-right: 15px;
