@@ -32,6 +32,7 @@ function getCurrentLocation() {
 
             console.log("User's current lat & lon: ", latitude, ", ", longitude);
             displayresto();
+            getCurWeather();
         }, function (error) { // Handle error
             switch (error.code) {
                 case error.PERMISSION_DENIED: // User denied the access to their location
@@ -189,6 +190,7 @@ function displayresto() {
             console.log(typeof restoObj);
             console.log("Resto data: ", restoObj);
             $.each(restoObj, function (index, value) {
+                // Show only restaurant that has picture
                 if (value.thumb != ""){
                     let location = restoObj.restaurant.location;
                     let userRating = restoObj.restaurant.user_rating;
