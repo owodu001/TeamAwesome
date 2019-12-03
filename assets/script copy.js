@@ -1,3 +1,4 @@
+// $(document).ready(function () {
 // GLOBAL VARIABLES =====================================================================================================================
 // Define goble variable for latitude and longitude
 let latitude = "";
@@ -6,6 +7,10 @@ let longitude = "";
 const userInputEl = document.getElementById("search-term");
 // Define global variable for search button element
 const searchBtnEl = document.getElementById("search-btn");
+// ======================================================================================================================================
+
+
+
 // MAKE AUTOCOMPLETE ON SEARCH BOX AND GET LATITUDE & LONGITUDE OF THE SELECTED LOCATION ================================================
 function autoComplete(inputEl) {
     // Create new object of Google places with the type of 'geocode'
@@ -22,43 +27,51 @@ function autoComplete(inputEl) {
 }
 
 // GET USER CURRENT LOCATION AND GET THEIR LOCATION'S LATITUDE & LONGITUDE ===============================================================
-function getCurrentLocation() {
+function getCurLocation() {
+    // This function is based on geoFindMe function found at
+    //https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
+    //this function return an object with the lat and lon of current location
+   
 
-    // If user allowed access to their current location, update the global lat & lng
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            latitude = position.coords.latitude;
-            longitude = position.coords.longitude;
+    let location = {};
 
-            console.log("User's current lat & lon: ", latitude, ", ", longitude);
-        }, function (error) { // Handle error
-            switch (error.code) {
-                case error.PERMISSION_DENIED: // User denied the access to their location
-                    break;
-                case error.POSITION_UNAVAILABLE: // Browser doesn't support location service
-                    alert("Location information is unavailable.");
-                    break;
-                case error.TIMEOUT: // User has not responded to request for access to their location
-                    alert("The request to get user location timed out.");
-                    break;
-                case error.UNKNOWN_ERROR: // Other unknown error
-                    alert("An unknown error occurred.");
-                    break;
-            }
-        });
-    } else { return; }
-}
+    function success(position) {
+      
+
+      location = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        success: true
+      }
+     
+      getCurWeather(location);
+      getForecastWeather(location);
+    }
+
+    function error() {
+      location = { success: false }
+      console.log('Could not get location');
+      return location;
+    }
+
+    if (!navigator.geolocation) {
+      console.log('Geolocation is not supported by your browser');
+    } else {
+      navigator.geolocation.getCurrentPosition(success, error);
+    }
+  };
+
 
 // EXECUTE autoComplete() & getCurrentLocation() WHEN PAGE LOADS =====================================================================
 autoComplete(userInputEl);
-getCurrentLocation();
+
 
 // ADD CLICK EVENT TO THE SEARCH BUTTON ==============================================================================================
 searchBtnEl.addEventListener("click", function (event) {
     event.preventDefault();
     // Check if global latitude and longitude have been changed with new values
     console.log("User selected lat: ", latitude, " lng: ", longitude);
-    getCurWeather();
+    getCurWeather(location);
     displayresto();
 
 });
@@ -79,21 +92,24 @@ function convertDate(epoch) {
 
     return readable;
 }
-function getCurWeather() {
+function getCurWeather(loc) {
 
-    // function to get current weather
-    // returns object of current weather data
-    // clear search field
-    //  $('#search-term').val("");
-    //   city = `lat=${latitude}&lon=${longitude}`;
-    // set queryURL based on type of query
+    
+  
     const apiKey = "166a433c57516f51dfab1f7edaed8413";
     let requestType = "";
-    let query = "";
+    let query = "";  
     let url = 'https://api.openweathermap.org/data/2.5/';
-    requestType = 'weather';
-    console.log("latitude-weather:", latitude);
-
+    if (typeof loc === "object") {
+        city = `lat=${loc.latitude}&lon=${loc.longitude}`;
+      } else {
+        city = `q=${loc}`;
+      }
+  
+      // set queryURL based on type of query
+      requestType = 'weather';
+      query = `?${city}&units=imperial&appid=${apiKey}`;
+      queryURL = `${url}${requestType}${query}`;
     query = `?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`;
     queryURL = `${url}${requestType}${query}`;
     // Create an AJAX call to retrieve data Log the data in console
@@ -102,7 +118,7 @@ function getCurWeather() {
         method: 'GET'
     }).then(function (response) {
 
-console.log("Weather data: ", response);
+
         weatherObj = {
             city: `${response.name}`,
             wind: response.wind.speed,
@@ -208,6 +224,7 @@ function displayresto() {
 
     });
 }
+// mira
 
 
 
@@ -215,4 +232,4 @@ function displayresto() {
 
 
 
-
+// });
