@@ -71,7 +71,7 @@ function displayresto() {
         "async": true,
         "crossDomain": true,
         "url": "https://developers.zomato.com/api/v2.1/search?lat=" +
-            latitude + "&lon=" + longitude + "&count=100",
+            latitude + "&lon=" + longitude + "&count=100&sort=real_distance&order=asc", 
         "method": "GET", // use Get method
         "headers": {
             "user-key": "91ed3953ab67d3bc31054f6a0ee5a372",
