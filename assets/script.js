@@ -31,6 +31,7 @@ function getCurrentLocation() {
             longitude = position.coords.longitude;
 
             console.log("User's current lat & lon: ", latitude, ", ", longitude);
+            displayresto();
         }, function (error) { // Handle error
             switch (error.code) {
                 case error.PERMISSION_DENIED: // User denied the access to their location
@@ -168,7 +169,7 @@ function displayresto() {
         "async": true,
         "crossDomain": true,
         "url": "https://developers.zomato.com/api/v2.1/search?lat=" +
-            latitude + "&lon=" + longitude + "&count=100",
+            latitude + "&lon=" + longitude + "&count=100&sort=real_distance&order=asc", 
         "method": "GET", // use Get method
         "headers": {
             "user-key": "91ed3953ab67d3bc31054f6a0ee5a372",
@@ -188,20 +189,23 @@ function displayresto() {
             console.log(typeof restoObj);
             console.log("Resto data: ", restoObj);
             $.each(restoObj, function (index, value) {
-                let location = restoObj.restaurant.location;
-                let userRating = restoObj.restaurant.user_rating;
-                html += "<div class='data img-rounded'>";
-                html += "<div class='rating'>";
-                html += "<span title='" + userRating.rating_text + "'><p style='color:white;background-color:#" + userRating.rating_color + ";border-radius:4px;border:none;padding:2px 10px 2px 10px;text-align: center;text-decoration:none;display:inline-block;font-size:16px;float:right;'><strong>" + userRating.aggregate_rating + "</strong></p></span><br>";
-                html += "  <strong class='text-info'>" + userRating.votes + " votes</strong>";
-                html += "</div>";
-                html += "<img class='resimg img-rounded' src=" + value.thumb + " alt='Restaurant Image' height='185' width='185'>";
-                html += "<a href=" + value.url + " target='_blank' class='action_link'><h2 style='color:red;'><strong>" + value.name + "</strong></h2></a>";
-                html += "  <strong class='text-primary'>" + location.locality + "</strong><br>";
-                html += "  <h6 style='color:grey;'><strong>" + location.address + "</strong></h6><hr>";
-                html += "  <strong>CUISINES</strong>: " + value.cuisines + "<br>";
-                html += "  <strong>COST FOR TWO</strong>: " + value.currency + value.average_cost_for_two + "<br>";
-                html += "</div><br>";
+                if (value.thumb != ""){
+                    let location = restoObj.restaurant.location;
+                    let userRating = restoObj.restaurant.user_rating;
+                    html += "<div class='data img-rounded'>";
+                    html += "<div class='rating'>";
+                    html += "<span title='" + userRating.rating_text + "'><p style='color:white;background-color:#" + userRating.rating_color + ";border-radius:4px;border:none;padding:2px 10px 2px 10px;text-align: center;text-decoration:none;display:inline-block;font-size:16px;float:right;'><strong>" + userRating.aggregate_rating + "</strong></p></span><br>";
+                    html += "  <strong class='text-info'>" + userRating.votes + " votes</strong>";
+                    html += "</div>";
+                    html += "<img class='resimg img-rounded' src=" + value.thumb + " alt='Restaurant Image' height='185' width='185'>";
+                    html += "<a href=" + value.url + " target='_blank' class='action_link'><h2 style='color:red;'><strong>" + value.name + "</strong></h2></a>";
+                    html += "  <strong class='text-primary'>" + location.locality + "</strong><br>";
+                    html += "  <h6 style='color:grey;'><strong>" + location.address + "</strong></h6><hr>";
+                    html += "  <strong>CUISINES</strong>: " + value.cuisines + "<br>";
+                    html += "  <strong>COST FOR TWO</strong>: " + value.currency + value.average_cost_for_two + "<br>";
+                    html += "</div><br>";
+                }
+                
             });
         });
         $("#food-info").html(html);
