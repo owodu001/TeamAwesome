@@ -64,7 +64,7 @@ searchBtnEl.addEventListener("click", function (event) {
     displayresto();
 
 });
-// Amiraaaaaaaa =====================================================================
+
 function convertDate(epoch) {
     // function to convert unix epoch to local time
     // returns arr ["MM/DD/YYYY, HH:MM:SS AM", "MM/DD/YYYY", "HH:MM:SS AM"]
@@ -84,10 +84,6 @@ function convertDate(epoch) {
 function getCurWeather() {
 
     // function to get current weather
-    // returns object of current weather data
-    // clear search field
-    //  $('#search-term').val("");
-    //   city = `lat=${latitude}&lon=${longitude}`;
     // set queryURL based on type of query
     const apiKey = "166a433c57516f51dfab1f7edaed8413";
     let requestType = "";
@@ -115,7 +111,7 @@ console.log("Weather data: ", response);
             desc: response.weather[0].description
         }
 
-        // calls function to draw results to page
+        // calls function to draw result to page
         drawCurWeather(weatherObj);
 
     });
@@ -193,13 +189,13 @@ function displayresto() {
                 if (value.thumb != ""){
                     let location = restoObj.restaurant.location;
                     let userRating = restoObj.restaurant.user_rating;
-                    html += "<div class='data img-rounded'>";
+                    html += "<div class='data '>";
                     html += "<div class='rating'>";
                
                     html += "<span title='" + userRating.rating_text + "'><p style='color:white;background-color:#" + userRating.rating_color + ";border-radius:4px;border:none;padding:2px 10px 2px 10px;text-align: center;text-decoration:none;display:inline-block;font-size:16px;float:right;'><strong>" + userRating.aggregate_rating + "</strong></p></span><br>";
                     html += "  <strong class='has-text-info'>" + userRating.votes + " votes</strong>";
                     html += "</div>";
-                    html += "<img class='resimg img-rounded' src=" + value.thumb + " alt='Restaurant Image' height='185' width='185'>";
+                    html += "<img class='resimg' src=" + value.thumb + " alt='Restaurant Image' height='185' width='185'>";
                     html += "<a href=" + value.url + " target='_blank' class='action_link'><h2 style='color:blue;'><strong>" + value.name + "</strong></h2></a>";
                     html += "  <strong class='has-text-primary'>" + location.locality + "</strong><br>";
                     html += "  <h6 style='color:grey;'><strong>" + location.address + "</strong></h6><hr>";
