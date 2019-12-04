@@ -12,9 +12,6 @@
 </head>
 
 <body>
-  <!-- navbar c/o bulma.io -->
-
-  <!-- end navbar-->
   <section class="section is-centered">
     <div class="container has-text-centered" id="start-container">
       <div class="row">
@@ -41,37 +38,39 @@
       </div>
     </div>
   </section>
-  
-  <div class="container has-text-centered" id="results-container">
-    <div class="row is-centered">
+  <div class="container">
+    <div class="row has-text-centered">
       <div class="box has-background-warning">
-        <h2 class="subtitle">Weather</h2>
+        <h2 class="subtitle  has-text-black ">Weather</h2>
         <hr>
         <div class="card" id="weather">
-
-           
-          </div>
-        </div>
-      </div>
-      
-      <div class="box has-background-warning">
-        <h2 class="subtitle">Cuisine</h2>
-        <hr>
-        <div class="card" id ="food-info">
-         
-        </div>
         </div>
       </div>
     </div>
+
+    <div class="row has-background-warning ">
+      <h2 class="subtitle has-text-black has-text-centered ">Cuisine</h2>
+      <hr>
+      <div class="column is-12" id="food-info"></div>
+    </div>
+
   </div>
-
-
-<!-- footer -->
-<!-- Paul added Google places api, axios library, and local js file 'script.js'-->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAo7LHYw7uiQ-ejxQ_FBR_BGyLxz5TPS2Q
+  <!-- footer -->
+  <footer class="footer has-background-warning">
+      <div class="container">
+          <div class="content has-text-centered">
+              <p>
+                  <strong>Written and coded by <a href="https://github.com/owodu001/TeamAwesome">TeamAwesome</a>.</strong>
+                  <strong>The source code is licensed  <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.</strong> <br>
+              </p>
+          </div>
+      </div>
+  </footer>
+  <!-- Paul added Google places api, axios library, and local js file 'script.js'-->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAo7LHYw7uiQ-ejxQ_FBR_BGyLxz5TPS2Q
 &libraries=places"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script> 
- <script src="./assets/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+  <script src="./assets/script.js"></script>
 </body>
