@@ -26,33 +26,24 @@ li{
     background-color: #ececec;
   }
  
-  .data {
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: #F5F5F5;
-  }
-  
-  a.action_link {
-    text-decoration: none;
-  }
-
+   .data {
+   padding:10px;
+    background-color: #F5F5F5; 
+  } 
   .resimg {
-    float: left;
-     margin-right: 15px; */
+   
+     margin-right: 15px; 
 
+  } 
+  h2{
+padding-top:15px;
+margin-top:20px;
   }
-  
-  .rating {
-    float: right;
-    margin-right: 15px;
-  }
-
   .input {
     width:auto;
   }
-
-  .box {
-    margin-top: 10px;
+  
+  .footer{
+    margin-top:30px;
+    height:100px;
   }
